@@ -11,6 +11,30 @@ function Hornes(data){
 }
 
 Hornes.prototype.render=function(){
+  /*
+  //importantttttttttttt
+  //create an empty div tag
+  let hornesClone=$('<div></div>')
+  hornesClone.addClass(this.keyword);
+
+
+
+  //hay it reads what inside the photo template
+  //it adds the template to the output div
+  hornesClone.html('photo-template').html();
+
+  //put the data on
+hornesClone.find('h2').text(this.title);
+hornesClone.find('img').attr('src', this.image_url);
+hornesClone.find('p').text(this.description);
+
+
+
+
+
+  hornesOutput.html('<span>hi</span>')
+  $(main).append(hornesOutput)
+  */
 let hornesClone=$(`.photo-template`).clone();
 hornesClone.removeClass('photo-template');
 hornesClone.find('img').attr('src', this.image_url);
@@ -20,6 +44,9 @@ hornesClone.find('h4').text(this.keyword);
 hornesClone.find('h5').text(this.hornes);
 $('main').append(hornesClone);
 
+//clone(copy) the photo template
+//add that copy to the page
+//in the copy put that data into the markup
 
 }
 
@@ -86,7 +113,23 @@ Hornes.prototype.filter = function() {
   };
 
 
+ /* Hornes.prototype.populate=function(){
+//bedoon had ra7 yseer feeh tekrar
+let seen={};
 
+    all.forEach((horn) =>{
+      if (!seen[horn.keyword]){
+        let option=`<option value="$(horn.keyword)">
+        $(horn.keyword)</option>`
+        $('select').append(option);
+
+      //console.log(horn.keyword)
+        seen[horn.keyword]=true;}
+      
+     
+
+    }
+  )}*/
   Hornes.prototype.handleFunc = function() {
     $('select').on('change', function () {
         let $selected = $(this).val();
@@ -106,4 +149,11 @@ Hornes.prototype.filter = function() {
         }
       });
     };
+
+//badal eli foo2
+$().on('change',function(){
+  let selected=$(this).val();
+  $('div').hide();
+  $(`.${selected}`.fadeIn(800))
+});
     
